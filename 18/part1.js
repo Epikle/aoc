@@ -15,7 +15,7 @@ input
   .map((cube) => cube.split(',').map(Number))
   .forEach(([cx, cy, cz]) => {
     directions.forEach(([dx, dy, dz]) => {
-      if (!input.includes([cx + dx, cy + dy, cz + dz].join(','))) answer++;
+      if (!input.includes([cx + dx, cy + dy, cz + dz].join())) answer++;
     });
   });
 

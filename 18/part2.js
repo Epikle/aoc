@@ -21,7 +21,7 @@ const cubes = {};
 for (let z = minZ; z <= maxZ; z++) {
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
-      const coord = [x, y, z].join(',');
+      const coord = [x, y, z].join();
       cubes[coord] = input.includes(coord);
     }
   }
@@ -31,10 +31,10 @@ const queue = [[minX, minY, minZ]];
 
 while (queue.length > 0) {
   const [x, y, z] = queue.pop();
-  delete cubes[[x, y, z].join(',')];
+  delete cubes[[x, y, z].join()];
 
   directions.forEach(([dx, dy, dz]) => {
-    if (cubes[[x + dx, y + dy, z + dz].join(',')] === false) {
+    if (cubes[[x + dx, y + dy, z + dz].join()] === false) {
       queue.push([x + dx, y + dy, z + dz]);
     }
   });
@@ -46,7 +46,7 @@ Object.keys(cubes).forEach((position) => {
   const [cx, cy, cz] = position.split(',').map(Number);
 
   directions.forEach(([dx, dy, dz]) => {
-    if (!Object.hasOwn(cubes, [cx + dx, cy + dy, cz + dz].join(','))) answer++;
+    if (!Object.hasOwn(cubes, [cx + dx, cy + dy, cz + dz].join())) answer++;
   });
 });
 
